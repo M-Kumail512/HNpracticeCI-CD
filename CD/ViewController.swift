@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Practicing CI for the GitHub. Changes after making repo private......")
+        print("Practicing CI for the GitHub. Changes after making repo private.")
     }
     
 

@@ -2,24 +2,16 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = "CD"                      // Your .xcodeproj name
-        SCHEME = "CD"                            // Scheme to build
-        DESTINATION = "generic/platform=iOS"     // Simulator platform
-        GITHUB_CREDENTIALS_ID = 'your-credentials-id' // Replace with the ID of your GitHub credentials in Jenkins
+        PROJECT_NAME = "CD"
+        SCHEME = "CD"
+        DESTINATION = "generic/platform=iOS"
     }
 
     stages {
         stage('Checkout') {
             steps {
                 echo "🔄 Checking out branch: ${env.BRANCH_NAME}"
-                checkout scm: [
-                    $class: 'GitSCM',
-                    branches: [[name: "*/${env.BRANCH_NAME}"]],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git',
-                        credentialsId: "${GITHUB_CREDENTIALS_ID}"
-                    ]]
-                ]
+                git credentialsId: 'f5af6243-b9d9-4031-9e48-50c4f1daea1c', url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git', branch: 'main'
             }
         }
 
