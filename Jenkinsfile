@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "🔄 Checking out branch: ${env.BRANCH_NAME}"
-                git credentialsId: 'f5af6243-b9d9-4031-9e48-50c4f1daea1c', url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git', branch: 'main'
+                git credentialsId: 'gitHub-cred', url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git', branch: 'main'
             }
         }
 
