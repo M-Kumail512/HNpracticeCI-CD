@@ -30,6 +30,17 @@ pipeline {
                 """
             }
         }
+
+        stage('Deploy to TestFlight') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo "🚀 Uploading build to TestFlight..."
+                // If you're using Bundler, replace with: bundle exec fastlane beta
+                sh 'fastlane beta'
+            }
+        }
     }
 
     post {

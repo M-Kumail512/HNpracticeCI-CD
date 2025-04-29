@@ -1,0 +1,34 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+app_store_connect_api_key(
+  key_id: "Z9L46VG577",
+  issuer_id: "89f08ee0-08b1-440f-a90a-f2bdbb4b32e0",
+  key_filepath: "fastlane/AuthKey_Z9L46VG577.p8",
+  in_house: false
+)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    build_app(scheme: "CD",  # replace with your scheme
+    export_method: "app-store"
+    )
+    upload_to_testflight
+  end
+end
+
