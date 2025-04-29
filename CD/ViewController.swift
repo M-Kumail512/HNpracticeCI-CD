@@ -14,8 +14,4 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("Practicing CI for the GitHub. Changes after making repo private.")
     }
-    
-
-
 }
-
