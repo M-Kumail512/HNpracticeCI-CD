@@ -15,7 +15,5 @@ class ViewController: UIViewController {
         print("Practicing CI for the GitHub. Changes after making repo private.")
     }
     
-
-
 }
 
