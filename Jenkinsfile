@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+	 stage('Test') {
+            steps {
+                sh 'xcodebuild test -workspace CD.xcodeproj -scheme CD -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro"'
+            }
+        }
+
         stage('Build') {
             when {
                 branch 'main'

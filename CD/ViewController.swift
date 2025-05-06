@@ -15,5 +15,9 @@ class ViewController: UIViewController {
         print("Practicing CI for the GitHub. Changes after making repo private.")
     }
     
+    func sumAndPrint() -> Int {
+        return 5 + 10
+        
+    }
 }
 

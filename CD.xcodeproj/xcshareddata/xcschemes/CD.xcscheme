@@ -52,6 +52,17 @@
                ReferencedContainer = "container:CD.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "048B51062DCA28AA00C8C450"
+               BuildableName = "CDUITest.xctest"
+               BlueprintName = "CDUITest"
+               ReferencedContainer = "container:CD.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
