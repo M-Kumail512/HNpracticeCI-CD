@@ -11,13 +11,20 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "🔄 Checking out branch: ${env.BRANCH_NAME}"
-                git credentialsId: 'gitHub-cred', url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git', branch: 'main'
+                git credentialsId: 'gitHub-cred', url: 'https://github.com/M-Kumail512/HNpracticeCI-CD.git', branch: "${env.BRANCH_NAME}"
             }
         }
 
-	 stage('Test') {
+        stage('Test') {
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'stage'
+                }
+            }
             steps {
-                sh 'xcodebuild test -workspace CD.xcodeproj -scheme CD -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro"'
+                echo "🧪 Running tests..."
+                sh 'xcodebuild test -project CD.xcodeproj -scheme CD -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro"'
             }
         }
 
@@ -43,7 +50,6 @@ pipeline {
             }
             steps {
                 echo "🚀 Uploading build to TestFlight..."
-                // If you're using Bundler, replace with: bundle exec fastlane beta
                 sh 'fastlane beta'
             }
         }
