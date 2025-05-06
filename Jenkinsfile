@@ -30,7 +30,10 @@ pipeline {
 
         stage('Build') {
             when {
-                branch 'main'
+                anyOf {
+                    branch 'main'
+                    branch 'stage'
+                }
             }
             steps {
                 echo "🛠️ Building the iOS project..."
@@ -46,7 +49,10 @@ pipeline {
 
         stage('Deploy to TestFlight') {
             when {
-                branch 'main'
+                anyOf {
+                    branch 'main'
+                    branch 'stage'
+                }
             }
             steps {
                 echo "🚀 Uploading build to TestFlight..."
