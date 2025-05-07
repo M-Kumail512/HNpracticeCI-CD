@@ -23,11 +23,13 @@ pipeline {
                 }
             }
             steps {
-                echo "🧪 (Simulated) Running tests..."
-                // Simulate test success
+                echo "🧪 Running tests..."
+                sh 'xcodebuild test -project CD.xcodeproj -scheme CD -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro"'
             }
         }
 
+        // Temporarily disabled build stage
+        /*
         stage('Build') {
             when {
                 anyOf {
@@ -36,11 +38,14 @@ pipeline {
                 }
             }
             steps {
-                echo "🛠️ (Simulated) Building the iOS project..."
-                // Simulate build success
+                echo "🛠️ Skipping build stage for now"
+                // sh '... actual build command ...'
             }
         }
+        */
 
+        // Temporarily disabled deployment
+        /*
         stage('Deploy to TestFlight') {
             when {
                 anyOf {
@@ -49,10 +54,11 @@ pipeline {
                 }
             }
             steps {
-                echo "🚀 (Simulated) Uploading build to TestFlight..."
-                // Simulate deployment success
+                echo "🚀 Skipping TestFlight upload for now"
+                // sh 'fastlane beta'
             }
         }
+        */
     }
 
     post {
