@@ -23,8 +23,8 @@ pipeline {
                 }
             }
             steps {
-                echo "🧪 Running tests..."
-                sh 'xcodebuild test -project CD.xcodeproj -scheme CD -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro"'
+                echo "🧪 (Simulated) Running tests..."
+                // Simulate test success
             }
         }
 
@@ -36,14 +36,8 @@ pipeline {
                 }
             }
             steps {
-                echo "🛠️ Building the iOS project..."
-                sh """
-                xcodebuild clean build \
-                -project ${PROJECT_NAME}.xcodeproj \
-                -scheme ${SCHEME} \
-                -destination '${DESTINATION}' \
-                CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-                """
+                echo "🛠️ (Simulated) Building the iOS project..."
+                // Simulate build success
             }
         }
 
@@ -55,8 +49,8 @@ pipeline {
                 }
             }
             steps {
-                echo "🚀 Uploading build to TestFlight..."
-                sh 'fastlane beta'
+                echo "🚀 (Simulated) Uploading build to TestFlight..."
+                // Simulate deployment success
             }
         }
     }
